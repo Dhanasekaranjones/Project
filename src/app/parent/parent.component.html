@@ -1,0 +1,43 @@
+<div class="container contact-form">
+
+    <a href="" routerLink="/child">List User's</a>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <h3>Add Details</h3>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <input type="text" name="name" [ngClass]="{ 'is-invalid': submitted && f.name.errors }" formControlName="name" class="form-control" placeholder="Your Name *" value="" required/>
+                    <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                        <div *ngIf="f.name.errors.required">Name is required</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="number" formControlName="mobile" name="mobile" [ngClass]="{ 'is-invalid': submitted && f.mobile.errors }" class="form-control" placeholder="Your Mobile no *" value="" required/>
+                    <div *ngIf="submitted && f.mobile.errors" class="invalid-feedback">
+                        <div *ngIf="f.mobile.errors.required">Mobile no is required</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="text" formControlName="email" name="email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" class="form-control" placeholder="Your Email *" value="" required/>
+                    <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                        <div *ngIf="f.email.errors.required">Email is required</div>
+                        <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="submit" name="btnSubmit" class="btnContact" value="Submit" />
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <textarea name="address" ngx-google-places-autocomplete [options]='options' #placesRef="ngx-places" (onAddressChange)="AddressChange($event)" formControlName="address" [ngClass]="{ 'is-invalid': submitted && f.address.errors }" class="form-control" placeholder="Your Address Location*"
+                        style="width: 100%; height: 150px;" required></textarea>
+                    <div *ngIf="submitted && f.address.errors" class="invalid-feedback">
+                        <div *ngIf="f.address.errors.required">Address location is required</div>
+                    </div>
+                </div>
+            </div>
+            <!-- <app-child></app-child> -->
+        </div>
+    </form>
+</div>

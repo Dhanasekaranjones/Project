@@ -1,0 +1,25 @@
+<div class="container"><a href="" routerLink="/parent">Add User</a>
+    <h3>List Of User's</h3>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Edit</th>
+                <th scope="col">Name</th>
+                <th scope="col">Mobile</th>
+                <th scope="col">Email</th>
+                <th scope="col">Address</th>
+                <th scope="col">Delete</th>
+            </tr>
+        </thead>
+        <tbody *ngIf="uData.length">
+            <tr *ngFor="let item of uData;let i=index">
+                <td><i class="fas fa-edit" (click)="edit(item,i)"></i></td>
+                <td scope="row">{{item.name}}</td>
+                <td>{{item.mobile}}</td>
+                <td>{{item.email}}</td>
+                <td>{{item.lat}} {{item.lng}}</td>
+                <td><i class="far fa-trash-alt" (click)="Delete(item)"></i></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
